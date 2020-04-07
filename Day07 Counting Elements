@@ -1,0 +1,13 @@
+class Solution(object):
+    def countElements(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        arr = sorted(arr)
+        temp = set(arr)
+        curr_count = 0
+        for i in arr:
+            if (i + 1) in temp:
+                curr_count += 1
+        return curr_count
