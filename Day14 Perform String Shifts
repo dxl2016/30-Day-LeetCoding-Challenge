@@ -1,0 +1,15 @@
+class Solution(object):
+    def stringShift(self, s, shift):
+        """
+        :type s: str
+        :type shift: List[List[int]]
+        :rtype: str
+        """
+        temp = 0
+        for direction, amount in shift:
+            if direction == 1:
+                temp += amount
+            else:
+                temp -= amount
+        temp = temp % len(shift)
+        return s[-temp:] + s[:-temp] 
