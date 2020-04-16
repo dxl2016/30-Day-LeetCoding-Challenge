@@ -1,0 +1,13 @@
+class Solution(object):
+    def lastStoneWeight(self, stones):
+        """
+        :type stones: List[int]
+        :rtype: int
+        """
+        while(len(stones) >= 2):
+            stones = sorted(stones)
+            stones.append(stones.pop()-stones.pop())
+        if stones:
+            return stones[0]
+        else:
+            return 0
