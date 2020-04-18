@@ -1,0 +1,31 @@
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        try:
+            nr, nc = len(grid), len(grid[0])
+            temp = set()
+        except:
+            return 0
+        
+        def gridDFS(i, j):
+            if (i, j) in temp:
+                temp.remove((i, j))
+                gridDFS(i+1, j)
+                gridDFS(i-1, j)
+                gridDFS(i, j+1)
+                gridDFS(i, j-1)
+                
+        for i in range(0, nr):
+            for j in range(0, nc):
+                if grid[i][j] == '1':
+                    temp.add((i, j))
+        num_island = 0
+        while temp:
+            first = temp.pop()
+            temp.add(first)
+            gridDFS(first[0], first[1])
+            num_island += 1
+        return num_island
