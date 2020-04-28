@@ -1,0 +1,20 @@
+class Solution(object):
+    def subarraySum(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        accum_sum, Ncount = 0, 0
+        Hmap = {}
+        Hmap[0] = 1
+        for i in nums:     
+            accum_sum += i
+            diff_sum = accum_sum - k
+            if diff_sum in Hmap:
+                Ncount += Hmap[diff_sum] 
+            if accum_sum not in Hmap:
+                Hmap[accum_sum] = 1
+            else:
+                Hmap[accum_sum] += 1
+        return Ncount
